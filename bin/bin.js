@@ -33,12 +33,15 @@
       util.print('{');
     });
     plist.on('pushKey', function (key) {
+      keyStack.push(key);
       util.print('\n"' + key.replace(/"/g, '\\"') + '": ');
     });
     plist.on('assignVal', function (val) {
+      valStack.peek(-1)[keyStack.peek()] = val;
     });
     plist.on('popKey', function () {
-      // awkward
+      // awkward ','s
+      keyStack.pop();
       util.print(',');
     });
     plist.on('popObj', function () {
@@ -52,6 +55,7 @@
     plist.on('pushIndex', function () {
     });
     plist.on('pushEl', function (el) {
+      valStack.peek(-1).push(el);
     });
     plist.on('popIndex', function () {
       util.print(',');
