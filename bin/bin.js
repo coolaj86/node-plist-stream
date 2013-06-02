@@ -34,9 +34,12 @@
     });
     plist.on('pushKey', function (key) {
       keyStack.push(key);
-      util.print('\n"' + key.replace(/"/g, '\\"') + '": ');
+      util.print('\n' + JSON.stringify(key.toString()) + ': ');
     });
     plist.on('assignVal', function (val) {
+      if (!Array.isArray(val) && '{}' !== JSON.stringify(val)) {
+        util.print(JSON.stringify(val));
+      }
       valStack.peek(-1)[keyStack.peek()] = val;
     });
     plist.on('popKey', function () {
@@ -53,11 +56,13 @@
       util.print('\n[');
     });
     plist.on('pushIndex', function () {
+      //keyStack.push(valStack.peek(-1).length);
     });
     plist.on('pushEl', function (el) {
       valStack.peek(-1).push(el);
     });
     plist.on('popIndex', function () {
+      //keyStack.pop();
       util.print(',');
     });
     plist.on('popArray', function () {
