@@ -1,0 +1,39 @@
+{
+  "name": "plist-stream",
+  "version": "0.1.0",
+  "description": "Streaming parser for plist XML files",
+  "main": "lib/index",
+  "bin": {
+    "plist-stream": "bin.js"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "node-expat": "~2.0.0",
+    "sax": "~0.5.5",
+    "plist": "~0.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/coolaj86/node-plist-stream.git"
+  },
+  "keywords": [
+    "plist",
+    "stream",
+    "xml",
+    "apple",
+    "mac",
+    "osx",
+    "config"
+  ],
+  "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.info/)",
+  "license": "Apache2",
+  "bugs": {
+    "url": "https://github.com/coolaj86/node-plist-stream/issues"
+  }
+}
